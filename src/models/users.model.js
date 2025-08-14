@@ -24,7 +24,7 @@ export const createUser = (newUser) => {
         })
 }
 
-// may need to rewrite
+// may need to rewrite to allow for partial patches
 export const updateUser = (updateUser, id) => {
     const {firstName, lastName, email, number} = updateUser
     return db.query(`UPDATE users SET firstName = $1, lastName=$2, email=$3, number=$4 WHERE user_id=$5 RETURNING *`

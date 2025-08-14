@@ -4,7 +4,13 @@ const userRouter = express.Router();
 
 userRouter
 .route("/")
-.post(postUser)
 .get(getUsers)
+.post(postUser)
+
+userRouter
+.route("/:user_id")
+.get(getUser)
+.patch(patchUser)
+.delete(deleteUser)
 
 export default userRouter;
