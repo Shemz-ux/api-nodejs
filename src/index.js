@@ -9,7 +9,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/api", apiRouter)
+app.use("/api", apiRouter);
+
 
 // testing db connection
 app.get("/", async (req,res)=>{
@@ -17,7 +18,10 @@ app.get("/", async (req,res)=>{
     res.send(`The database is: ${result.rows[0].current_database}`)
 });
 
+// runSeed()
+
 // catch all errors
+
 app.use((req, res, next) => {
     const err = new Error("Invalid request");
     err.status = 404;

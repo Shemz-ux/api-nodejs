@@ -16,20 +16,19 @@ export const fetchUserById = (id) => {
     })
 }
 
-
 export const createUser = (newUser) => {
-    const {firstName, lastName, email, number} = newUser
-    return db.query(`INSERT INTO users (firstName, lastName, email, number)
-        VALUES ($1, $2, $3, $4) RETURNING *`, [firstName, lastName, email, number]).then(({rows})=>{
+    const {firstName, lastName, email} = newUser
+    return db.query(`INSERT INTO users (firstName, lastName, email)
+        VALUES ($1, $2, $3) RETURNING *`, [firstName, lastName, email]).then(({rows})=>{
             return rows[0]
         })
 }
 
 // may need to rewrite to allow for partial patches
 export const updateUser = (updateUser, id) => {
-    const {firstName, lastName, email, number} = updateUser
-    return db.query(`UPDATE users SET firstName = $1, lastName=$2, email=$3, number=$4 WHERE user_id=$5 RETURNING *`
-        , [firstName, lastName, email, number, id]
+    const {firstName, lastName, email} = updateUser
+    return db.query(`UPDATE users SET firstName = $1, lastName=$2, email=$3 WHERE user_id=$4 RETURNING *`
+        , [firstName, lastName, email, id]
     ).then(({rows})=>{
         return rows[0]
     })

@@ -37,7 +37,7 @@ export const deleteUser = (req, res, next) => {
 }
 
 export const postUser = (req, res, next) => {
-    const {newUser} = req.body
+    const newUser = req.body
     createUser(newUser).then((user)=>{
         res.status(201).send({newUser: user})
     }).catch((err)=>{
