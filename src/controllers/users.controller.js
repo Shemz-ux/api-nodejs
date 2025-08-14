@@ -33,7 +33,7 @@ export const deleteUser = (req, res, next) => {
         res.status(204).send('User Deleted')
     }).catch((err)=>{
         next(err)
-    })2
+    })
 }
 
 export const postUser = (req, res, next) => {
