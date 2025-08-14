@@ -34,7 +34,7 @@ export const updateUser = (updateUser, id) => {
     })
 }
 
-export const deleteUser = (id) => {
+export const removeUser = (id) => {
     return db.query(`DELETE FROM users WHERE user_id = $1 RETURNING *`,[id])
     .then(({rows})=>{
         if (rows.length === 0){
