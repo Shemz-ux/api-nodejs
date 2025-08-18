@@ -1,14 +1,14 @@
 export const psqlError = (err, req, res, next) => {
     if (err.code === '22P02'){
-        return res.status(400).send({msg: 'Invalid request'})
+        return res.status(400).send({msg: 'Invalid request!'})
     }
 
     if (err.code === '23503'){
-        return res.status(400).send({msg: 'Invalid insertion'})
+        return res.status(400).send({msg: 'Invalid insertion!'})
     }
 
     if (err.code === '23502'){
-        return res.status(400).send({msg: 'Missing data field'})
+        return res.status(400).send({msg: 'Missing data field!'})
     }
 
     next(err);

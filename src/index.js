@@ -18,14 +18,11 @@ app.get("/", async (req,res)=>{
     res.send(`The database is: ${result.rows[0].current_database}`)
 });
 
-// runSeed()
 
 // catch all errors
 
 app.use((req, res, next) => {
-    const err = new Error("Invalid request");
-    err.status = 404;
-    next(err);
+    return res.status(404).send({msg: 'Invalid request!'})
 });
 
 // error handlers 

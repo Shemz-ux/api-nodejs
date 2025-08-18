@@ -55,12 +55,6 @@ export const updateUser = (updateUser, id) => {
     return db.query(query, values).then(({ rows }) => rows[0])
 }
 
-// return db.query(`UPDATE users SET firstName = $1, lastName=$2, email=$3 WHERE user_id=$4 RETURNING *`
-//     , [firstName, lastName, email, id]
-// ).then(({rows})=>{
-//     return rows[0]
-// })
-
 export const removeUser = (id) => {
     return db.query(`DELETE FROM users WHERE user_id = $1 RETURNING *`,[id])
     .then(({rows})=>{
