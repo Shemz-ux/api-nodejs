@@ -12,8 +12,8 @@ const db = new Pool({
     port: process.env.DB_PORT,
 });
 
-db.on("connect", () => {
-    console.log("Connection pool established with Database!")
-});
+// db.on("connect", () => {
+//     console.log("Connection pool established with Database!")
+// });
 
 export default db;
