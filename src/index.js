@@ -12,10 +12,9 @@ app.use(express.json());
 app.use("/api", apiRouter);
 
 
-// testing db connection
-app.get("/", async (req,res)=>{
-    const result = await db.query("SELECT current_database()");
-    res.send(`The database is: ${result.rows[0].current_database}`)
+// API documentation endpoint
+app.get("/", (req, res) => {
+    res.sendFile('endpoints.json', { root: '.' });
 });
 
 
