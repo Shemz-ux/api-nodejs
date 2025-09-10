@@ -43,8 +43,19 @@ export const postUser = async (req, res, next) => {
         // Create user in database
         const user = await createUser(newUser);
         
-        // Add user to Mailchimp (non-blocking)
-        addUserToMailchimp(newUser);
+        // Add user to Mailchimp and handle validation errors
+        const mailchimpResult = await addUserToMailchimp(newUser);
+        
+        if (mailchimpResult && !mailchimpResult.success) {
+            // Return user creation success but with Mailchimp warning
+            return res.status(201).send({
+                newUser: user,
+                warning: {
+                    message: mailchimpResult.error,
+                    details: mailchimpResult.details
+                }
+            });
+        }
         
         res.status(201).send({newUser: user});
     } catch (err) {
