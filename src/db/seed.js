@@ -13,6 +13,9 @@ const users = (data) => {
         firstName VARCHAR(255) NOT NULL,
         lastName VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
+        number VARCHAR(20),
+        occupation VARCHAR(255),
+        message TEXT,
         created_at TIMESTAMP DEFAULT NOW()
         )`).then(()=>{
             console.log("User table created!")

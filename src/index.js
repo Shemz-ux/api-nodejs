@@ -20,7 +20,6 @@ app.get("/", async (req,res)=>{
 
 
 // catch all errors
-
 app.use((req, res, next) => {
     return res.status(404).send({msg: 'Invalid request!'})
 });
