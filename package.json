@@ -4,8 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node src/connection.js",
     "dev": "nodemon src/connection.js",
-    "seed-dev": "node src/db/run-seed.js",
+    "seed": "node src/db/run-seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

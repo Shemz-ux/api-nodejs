@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import db from "./config/db.js";
 import apiRouter from "./routes/api-router.js";
 import { customError, psqlError, serverError } from "./middleware/errorHandlers.js";
 const app = express();
@@ -12,7 +11,7 @@ app.use(express.json());
 app.use("/api", apiRouter);
 
 
-// API documentation endpoint
+// endpoints.json file
 app.get("/", (req, res) => {
     res.sendFile('endpoints.json', { root: '.' });
 });
