@@ -1,4 +1,5 @@
 import { createUser, fetchUserById, fetchUsers, removeUser, updateUser } from "../models/users.model.js"
+import { addUserToMailchimp, updateMailchimpSubscriber } from "../services/mailchimp.service.js"
 
 export const getUsers = (req, res, next) => {
     fetchUsers().then((users)=>{
@@ -36,11 +37,17 @@ export const deleteUser = (req, res, next) => {
     })
 }
 
-export const postUser = (req, res, next) => {
+export const postUser = async (req, res, next) => {
     const newUser = req.body
-    createUser(newUser).then((user)=>{
-        res.status(201).send({newUser: user})
-    }).catch((err)=>{
-        next(err)
-    })
+    try {
+        // Create user in database
+        const user = await createUser(newUser);
+        
+        // Add user to Mailchimp (non-blocking)
+        addUserToMailchimp(newUser);
+        
+        res.status(201).send({newUser: user});
+    } catch (err) {
+        next(err);
+    }
 }
