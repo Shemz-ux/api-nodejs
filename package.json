@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "npm run seed",
     "start": "node src/connection.js",
     "dev": "nodemon src/connection.js",
     "seed": "node src/db/run-seed.js",
