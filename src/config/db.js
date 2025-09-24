@@ -16,13 +16,4 @@ const db = new Pool({
     : false,
 });
 
-db.connect()
-  .then(client => {
-    console.log("✅ Database connected!");
-    client.release();
-  })
-  .catch(err => {
-    console.error("❌ Database connection failed:", err.message);
-  });
-
 export default db;
