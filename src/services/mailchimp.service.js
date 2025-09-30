@@ -65,7 +65,7 @@ export const addUserToMailchimp = async (userData) => {
         return { success: true, data: response };
         
     } catch (error) {
-        console.error('Mailchimp API Error:', error.response?.body || error.message);
+        // console.error('Mailchimp API Error:', error.response?.body || error.message);
         
         // Check for specific validation errors
         if (error.status === 400) {
