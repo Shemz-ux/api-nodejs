@@ -14,7 +14,7 @@ const users = (data) => {
         lastName VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         number VARCHAR(20),
-        occupation VARCHAR(255),
+        industry VARCHAR(255),
         message TEXT,
         created_at TIMESTAMP DEFAULT NOW()
         )`).then(()=>{

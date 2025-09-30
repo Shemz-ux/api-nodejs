@@ -14,7 +14,7 @@ const ensureMergeFields = async () => {
     try {
         const requiredFields = [
             { tag: 'PHONE', name: 'Phone Number', type: 'phone' },
-            { tag: 'OCCUPATION', name: 'Occupation', type: 'text' },
+            { tag: 'INDUSTRY', name: 'Industry', type: 'text' },
             { tag: 'MESSAGE', name: 'Message', type: 'text' }
         ];
 
@@ -40,7 +40,7 @@ const ensureMergeFields = async () => {
 
 export const addUserToMailchimp = async (userData) => {
     try {
-        const { firstName, lastName, email, number, occupation, message } = userData;
+        const { firstName, lastName, email, number, industry, message } = userData;
         
         await ensureMergeFields();
         
@@ -51,7 +51,7 @@ export const addUserToMailchimp = async (userData) => {
                 FNAME: firstName,
                 LNAME: lastName,
                 PHONE: number || '',
-                OCCUPATION: occupation || '',
+                INDUSTRY: industry || '',
                 MESSAGE: message || ''
             }
         };
@@ -97,14 +97,14 @@ export const addUserToMailchimp = async (userData) => {
 
 export const updateMailchimpSubscriber = async (email, userData) => {
     try {
-        const { firstName, lastName, number, occupation, message } = userData;
+        const { firstName, lastName, number, industry, message } = userData;
         
         const updateData = {
             merge_fields: {
                 FNAME: firstName,
                 LNAME: lastName,
                 PHONE: number || '',
-                OCCUPATION: occupation || '',
+                INDUSTRY: industry || '',
                 MESSAGE: message || ''
             }
         };

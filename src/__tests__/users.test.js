@@ -22,7 +22,7 @@ describe('Users API Endpoints', () => {
         lastName: 'User',
         email: 'test@example.com',
         number: '+1234567890',
-        occupation: 'Tester',
+        industry: 'Tester',
         message: 'This is a test user'
       };
 
@@ -45,7 +45,7 @@ describe('Users API Endpoints', () => {
         lastName: 'Email',
         email: 'invalid-email',
         number: '+1234567890',
-        occupation: 'Tester',
+        industry: 'Tester',
         message: 'This should trigger a Mailchimp warning'
       };
 
@@ -135,7 +135,7 @@ describe('Users API Endpoints', () => {
 
       const updateData = {
         firstName: 'Updated',
-        occupation: 'Senior Tester'
+        industry: 'Senior Tester'
       };
 
       const response = await request(app)

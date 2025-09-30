@@ -36,7 +36,7 @@ describe('API Integration Tests', () => {
         lastName: 'Test',
         email: 'integration@test.com',
         number: '+1234567890',
-        occupation: 'QA Engineer',
+        industry: 'QA Engineer',
         message: 'Full integration test'
       };
 
@@ -66,7 +66,7 @@ describe('API Integration Tests', () => {
       // 4. Update user
       const updateData = {
         firstName: 'Updated Integration',
-        occupation: 'Senior QA Engineer'
+        industry: 'Senior QA Engineer'
       };
 
       const updateResponse = await request(app)

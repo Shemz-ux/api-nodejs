@@ -17,9 +17,9 @@ export const fetchUserById = (id) => {
 }
 
 export const createUser = (newUser) => {
-    const {firstName, lastName, email, number, occupation, message} = newUser
-    return db.query(`INSERT INTO users (firstName, lastName, email, number, occupation, message)
-        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [firstName, lastName, email, number, occupation, message]).then(({rows})=>{
+    const {firstName, lastName, email, number, industry, message} = newUser
+    return db.query(`INSERT INTO users (firstName, lastName, email, number, industry, message)
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [firstName, lastName, email, number, industry, message]).then(({rows})=>{
             return rows[0]
         })
 }
@@ -27,7 +27,7 @@ export const createUser = (newUser) => {
 export const updateUser = (updateUser, id) => {
     const fields = [];
     const values = [];
-    const validFields = ["firstName", "lastName", "email", "number", "occupation", "message"];
+    const validFields = ["firstName", "lastName", "email", "number", "industry", "message"];
     let index = 1;
 
     for (const[key, value] of Object.entries(updateUser)){
